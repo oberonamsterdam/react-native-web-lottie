@@ -10,9 +10,10 @@ class Animation extends PureComponent {
     this.loadAnimation(this.props);
 
     if (typeof this.props.progress === 'object' && this.props.progress._listeners) {
+      this.anim.currentFrame = this.calculateFrame(this.props.progress._startingValue);
       this.props.progress.addListener((progress) => {
         const { value } = progress;
-        let frame = value / (1 / this.anim.getDuration(true));
+        const frame = this.calculateFrame(value);
         this.anim.goToAndStop(frame, true);
       });
     }
@@ -24,10 +25,14 @@ class Animation extends PureComponent {
     }
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.source && nextProps.source && this.props.source.nm !== nextProps.source.nm) {
-      this.loadAnimation(nextProps);
+  componentDidUpdate(prevProps) {
+    if (this.props.source && prevProps.source && this.props.source.nm !== prevProps.source.nm) {
+      this.loadAnimation(this.props);
     }
+  }
+
+  calculateFrame = (value) => {
+    return Math.max(0, value / (1 / this.anim.getDuration(true)) - 1);
   }
 
   loadAnimation = (props) => {
