@@ -45,14 +45,11 @@
     "babel-plugin-react-native-web": "^0.10.0",
     "metro-react-native-babel-preset": "^0.51.1",
     "prettier": "^2.0.5",
-    "react": "^16.7.0",
-    "react-art": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "react-native-web": "^0.10.0",
-    "webpack": "^3.6.0"
+    "react-art": "^16.7.0"
   },
   "peerDependencies": {
-    "react-native-web": "*"
+    "react": "*",
+    "react-dom": "*"
   },
   "dependencies": {
     "lottie-web": "^5.7.1"

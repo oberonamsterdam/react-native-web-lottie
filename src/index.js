@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
-import { View } from 'react-native';
 import lottie from 'lottie-web';
 
 class Animation extends PureComponent {
@@ -73,7 +72,7 @@ class Animation extends PureComponent {
   };
 
   render() {
-    return <View style={this.props.style} ref={this.setAnimationDOMNode} />;
+    return <div ref={this.setAnimationDOMNode}></div>;
   }
 }
 
